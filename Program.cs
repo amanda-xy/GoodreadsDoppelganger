@@ -23,8 +23,7 @@ namespace GoodreadsDoppelganger
 
                 try
                 {
-                    var context = services.GetRequiredService<Models.GoodreadsContext>();
-                    Models.DbInitializer.Seed(context);
+                    Models.DbInitializer.Seed(services);
                 }
                 catch (Exception ex)
                 {

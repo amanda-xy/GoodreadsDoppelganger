@@ -118,7 +118,7 @@ namespace GoodreadsDoppelganger.Migrations
             modelBuilder.Entity("GoodreadsDoppelganger.Models.Review", b =>
                 {
                     b.HasOne("GoodreadsDoppelganger.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -129,6 +129,11 @@ namespace GoodreadsDoppelganger.Migrations
             modelBuilder.Entity("GoodreadsDoppelganger.Models.Author", b =>
                 {
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("GoodreadsDoppelganger.Models.Book", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }
