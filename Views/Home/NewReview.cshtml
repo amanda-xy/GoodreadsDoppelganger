@@ -9,27 +9,43 @@
 <form asp-action="NewReview">
     <div class="form-horizontal" role="form">
         <div>
-            <div>
-                <label class="h3" style="width:150px;">Rating: </label>
-                <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="oneStar" value="1" checked> 1 </label>
-                <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="twoStars" value="2"> 2 </label>
-                <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="threeStars" value="3"> 3 </label>
-                <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="fourStars" value="4"> 4 </label>
-                <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="fiveStars" value="5"> 5 </label>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
+            @*<div>
+                    <label class="h3" style="width:150px;">Rating: </label>
+                    <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="oneStar" value="1" checked> 1 </label>
+                    <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="twoStars" value="2"> 2 </label>
+                    <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="threeStars" value="3"> 3 </label>
+                    <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="fourStars" value="4"> 4 </label>
+                    <label style="width:50px;"> <input type="radio" asp-for="Rating"  name="rating" id="fiveStars" value="5"> 5 </label>
+                </div>*@
         </div>
     </div>
     <br />
     <h3>Write your review:</h3>
     <div class="form-group">
-<textarea asp-for="Text" id="review_review_usertext" maxlength="18800" name="review[review]" placeholder="Enter your review (optional)" rows="8" cols="100" style="display: block; height: auto;"></textarea>
+        @Html.TextAreaFor(r => r.Text, 9, 100, null)
+        @*<label asp-for="Text" class="control-label"></label>
+        <input asp-for="Text" class="form-control" />*@
+        <span asp-validation-for="Text" class="text-danger"></span>
     </div>
-    <div class="form-check">
-        <input asp-for="HasSpoilers" class="form-check-input" type="checkbox" value="Spoilers" id="flexCheckDefault">
-        <label asp-for="HasSpoilers" class="form-check-label" for="flexCheckDefault">
-            Review contains spoilers
-        </label>
+    @*<div class="form-group">
+        <textarea asp-for="Text" id="review_review_usertext" maxlength="18800" name="review[review]" placeholder="Enter your review (optional)" rows="8" cols="100" style="display: block; height: auto;"></textarea>
+            </div>*@
+    <div class="form-group">
+        @Html.CheckBoxFor(r => r.HasSpoilers)
+        <label>Review contains spoilers</label>
+        <span asp-validation-for="HasSpoilers" class="text-danger"></span>
     </div>
+    @*<div class="form-check">
+            <input asp-for="HasSpoilers" class="form-check-input" type="checkbox" value="Spoilers" id="flexCheckDefault">
+            <label asp-for="HasSpoilers" class="form-check-label" for="flexCheckDefault">
+                Review contains spoilers
+            </label>
+        </div>*@
     <br />
     <input type="submit" value="NewReview" class="btn btn-outline-info" />
 </form>

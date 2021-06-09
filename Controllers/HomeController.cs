@@ -60,7 +60,7 @@ namespace GoodreadsDoppelganger.Controllers
         //For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> NewReview([Bind("Text,HasSpoilers,BookId,Rating")] Review review)
+        public async Task<IActionResult> NewReview([Bind("Rating,Text,HasSpoilers")] Review review)
         {
             review.BookId = 1;
             review.PublicationDate = DateTime.Now;
