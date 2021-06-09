@@ -50,7 +50,7 @@ namespace GoodreadsDoppelganger.Controllers
             if (book == null)
                 return NotFound();
 
-            ViewBag.Book = book;
+            ViewBag.BookId = book.Id;
 
             return View();
         }
