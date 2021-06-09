@@ -44,7 +44,6 @@ C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppe
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Humanizer.dll
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\GoodreadsDoppelganger.csproj.AssemblyReference.cache
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\bin\Debug\net5.0\Microsoft.Identity.Client.dll

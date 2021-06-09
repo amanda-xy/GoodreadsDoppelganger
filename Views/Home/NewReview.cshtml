@@ -5,8 +5,10 @@
 }
 
 <h2>New Review (Titel)</h2>
+<h3>@ViewBag.BookId</h3>
 <br />
 <form asp-action="NewReview">
+    
     <div class="form-horizontal" role="form">
         <div>
             <div class="form-group">
@@ -47,5 +49,8 @@
             </label>
         </div>*@
     <br />
+    <div>
+        <input type ="hidden" asp-for="BookId" value="@ViewBag.BookId" />
+    </div>
     <input type="submit" value="NewReview" class="btn btn-outline-info" />
 </form>
