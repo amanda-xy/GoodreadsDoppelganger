@@ -4,14 +4,16 @@ using GoodreadsDoppelganger.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoodreadsDoppelganger.Migrations
 {
     [DbContext(typeof(GoodreadsContext))]
-    partial class GoodreadsContextModelSnapshot : ModelSnapshot
+    [Migration("20210609072720_iashjdk")]
+    partial class iashjdk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,8 +52,8 @@ namespace GoodreadsDoppelganger.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Genre")
-                        .HasColumnType("int");
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");

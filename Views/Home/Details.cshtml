@@ -1,6 +1,6 @@
 ﻿@model Book
 
-@{ 
+@{
     ViewData["Title"] = "Details";
 }
 
@@ -14,13 +14,21 @@
 <p>Publication date: @Model.PublicationDate.ToString("yyyy-MM-dd")</p>
 
 <h2>Reviews</h2>
-<ul>
-    @foreach (var review in Model.Reviews)
-            {
-                <li>
-                    <p>@review.Text</p>
-                </li>
-            }
 
-</ul>
+<a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+   New Review
+</a>
+
+
+
+
+    <ul>
+        @foreach (var review in Model.Reviews)
+        {
+            <li>
+                <p>@review.Text</p>
+            </li>
+        }
+
+    </ul>
 

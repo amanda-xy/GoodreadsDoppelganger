@@ -40,6 +40,37 @@ namespace GoodreadsDoppelganger.Controllers
             return View(book);
         }
 
+        //GET
+        public async Task<IActionResult> NewReview(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _context.Books.Include(b => b.Author).Include(b => b.Reviews).FirstOrDefaultAsync(b => b.Id == id);
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+        }
+
+        // POST: Movies/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Text,Genre,HasSpoilers,BookId,Rating")] Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(review);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(review);
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

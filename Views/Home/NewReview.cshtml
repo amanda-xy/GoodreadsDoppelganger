@@ -1,0 +1,32 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "New Review";
+}
+
+<h2>New Review @Model.Title</h2>
+<br />
+<form class="form-horizontal" role="form">
+    <div>
+        <div>
+            <label class="h3" style="width:150px;">Rating: </label>
+            <label style="width:50px;"> <input type="radio" name="rating" id="oneStar" value=1 checked> 1 </label>
+            <label style="width:50px;"> <input type="radio" name="rating" id="twoStars" value=2> 2 </label>
+            <label style="width:50px;"> <input type="radio" name="rating" id="threeStars" value=3> 3 </label>
+            <label style="width:50px;"> <input type="radio" name="rating" id="fourStars" value=4> 4 </label>
+            <label style="width:50px;"> <input type="radio" name="rating" id="fiveStars" value=5> 5 </label>
+        </div>
+    </div>
+</form>
+<br />
+<h3>Write your review:</h3>
+<textarea class="" id="review_review_usertext" maxlength="18800" name="review[review]" placeholder="Enter your review (optional)" rows="8" cols="100" style="display: block; height: auto;"></textarea>
+
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+        Review contains spoilers
+    </label>
+</div>
+<br />
+<input type="submit" value="Save" class="btn btn-outline-info" />

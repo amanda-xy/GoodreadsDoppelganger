@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoodreadsDoppelganger.Models
 {
+    public enum Genre { Fantasy, SciFi, Horror, Fiction, Historic, Drama, Romantic, Thriller, Biography }
     public class Book
     {
         public int Id { get; set; }
@@ -16,9 +17,10 @@ namespace GoodreadsDoppelganger.Models
         public string ImageUrl { get; set; }
         [Column(TypeName = "decimal(9,1)")]
         public decimal Rating { get; set; }
-        public string Genre { get; set; }
-        public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
+        public Genre Genre { get; set; }
+        public int? AuthorId { get; set; }
+        #nullable enable
+        public virtual Author? Author { get; set; }
         [DataType(DataType.Date)]
         public DateTime PublicationDate { get; set; }
         public virtual List<Review> Reviews { get; set; }
