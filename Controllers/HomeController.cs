@@ -67,7 +67,7 @@ namespace GoodreadsDoppelganger.Controllers
             {
                 _context.Add(review);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = review.BookId});
             }
             return View(review);
         }

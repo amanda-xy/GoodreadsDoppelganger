@@ -4,27 +4,59 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>@Model.Title</h1>
-<h3>by @Model.Author.FirstName @Model.Author.LastName</h3>
-<img src=@Model.ImageUrl alt=@Model.Title style="max-height:300px;" />
-<p>@Model.Description</p>
-<p>Genre: @Model.Genre</p>
-<p>Pages: @Model.NumberOfPages</p>
-<p>Rating: @Model.Rating.ToString("#.#") of 5 stars</p>
-<p>Publication date: @Model.PublicationDate.ToString("yyyy-MM-dd")</p>
+<div class="container-fluid" style="padding:0px">
+    @*<div>*@
+        <h1>@Model.Title</h1>
+        <h3>by @Model.Author.FirstName @Model.Author.LastName</h3>
+    @*</div>*@
+    <div>
+        <div style="float:left">
+            <img src=@Model.ImageUrl alt=@Model.Title style="max-height:300px;" />
+        </div>
+        <div style="float:left; margin-left:10px;">
+            <p>Genre: @Model.Genre</p>
+            <p>Pages: @Model.NumberOfPages</p>
+            <p>Rating: @Model.Rating.ToString("#.#") of 5 stars</p>
+            <p>Publication date: @Model.PublicationDate.ToString("yyyy-MM-dd")</p>
+        </div>
+    </div>
+</div>
+
+<div class="container row" style="margin-left:0px; padding:0px">
+    <br />
+    <p>@Model.Description</p>
+</div>
+
 
 <h2>Reviews</h2>
 
-<a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
-   New Review
-</a>
+<div>
+    <a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+        New Review
+    </a>
+</div>
 
-
-    <ul>
-        @foreach (var review in Model.Reviews)
+    <ul class="list-unstyled">
+        @foreach (var review in Model.Reviews.OrderByDescending(r => r.PublicationDate))
         {
-            <li>
-                <p>@review.Text</p>
+            <li style="margin-top:40px;">
+                <div class="card border-info">
+                    <div class="card-header">
+                        @if (review.HasSpoilers) { <p class="h3">Contains spoilers!!</p>  }
+
+                        <p class="h4">
+                            @review.Rating of 5 stars
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">@review.Text</p>
+                    </div>
+                    <div class="card-footer border-info">
+                        <p>
+                            <small class="text-muted">Published: @review.PublicationDate</small>
+                        </p>
+                    </div>
+                </div>
             </li>
         }
 
