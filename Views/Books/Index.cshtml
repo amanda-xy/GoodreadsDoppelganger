@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GoodreadsDoppelganger.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Books i bokstavsordning</h1>
+
+<div>
+    <ul class="list-unstyled" style="margin-top:50px">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
+                    <div class="card mb-3" style="max-height:200px; max-width:900px">
+                        <div class="row no-gutters">
+                            <div class="col-md-2">
+                                <img src="@item.ImageUrl" alt=@item.Title style="height:200px" />
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <h6 class="card-title">by @item.Author.FirstName @item.Author.LastName</h6>
+                                    <div class="card-text line-clamp">@item.Description</div>
+                                    <p class="card-text">
+                                        <small class="text-muted">Published: @item.PublicationDate.ToString("yyyy-MM-dd") | Rating: @item.Rating.ToString("#.#") of 5 stars | @item.NumberOfPages Pages</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </li>
+        }
+
+    </ul>
+</div>
