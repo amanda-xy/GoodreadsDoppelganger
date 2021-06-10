@@ -49,6 +49,8 @@ namespace GoodreadsDoppelganger.Controllers
                 return NotFound();
 
             ViewBag.BookId = book.Id;
+            ViewBag.BookTitle = book.Title;
+            ViewBag.BookAuthor = book.Author.FirstName + " " + book.Author.LastName;
 
             return View();
         }
