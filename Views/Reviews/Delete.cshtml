@@ -1,0 +1,35 @@
+﻿@model GoodreadsDoppelganger.Models.Review
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<br />
+<div>
+    <div class="card border-info">
+        <div class="card-header">
+            @if (Model.HasSpoilers)
+            {<p class="h3">Contains spoilers!!</p>}
+
+            <p class="h4">
+                @Model.Rating of 5 stars
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">@Model.Text</p>
+        </div>
+        <div class="card-footer border-info" style="padding-bottom:0px;">
+            <p>
+                <small class="text-muted">Published: @Model.PublicationDate</small>
+            </p>
+        </div>
+    </div>
+    <br />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-outline-info" />
+    </form>
+</div>

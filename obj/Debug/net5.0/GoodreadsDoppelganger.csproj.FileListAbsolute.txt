@@ -150,4 +150,9 @@ C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppe
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Books\Edit.cshtml.g.cs
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Books\Index.cshtml.g.cs
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Books\NewReview.cshtml.g.cs
-C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Books\Close.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Books\ConfirmationReview.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Reviews\Create.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Reviews\Delete.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Reviews\Details.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Reviews\Edit.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Reviews\ConfirmationDeleted.cshtml.g.cs

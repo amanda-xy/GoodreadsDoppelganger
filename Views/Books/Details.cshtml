@@ -28,7 +28,7 @@
 </div>
 
 
-<h2>Reviews</h2>
+<h2>Reviews (@Model.Reviews.Count)</h2>
 
 <div>
     <a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
@@ -48,6 +48,9 @@
                     <p class="h4">
                         @review.Rating of 5 stars
                     </p>
+                    <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@review.Id" target="_blank" class="btn btn-outline-info">
+                        Delete
+                    </a>
                 </div>
                 <div class="card-body">
                     <p class="card-text">@review.Text</p>

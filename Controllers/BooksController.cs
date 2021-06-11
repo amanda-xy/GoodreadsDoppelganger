@@ -21,7 +21,7 @@ namespace GoodreadsDoppelganger.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var goodreadsContext = _context.Books.Include(b => b.Author).OrderBy(b => b.Title);
+            var goodreadsContext = _context.Books.Include(b => b.Author).Include(b => b.Reviews).OrderBy(b => b.Title);
             return View(await goodreadsContext.ToListAsync());
         }
 
@@ -64,9 +64,20 @@ namespace GoodreadsDoppelganger.Controllers
             {
                 _context.Add(review);
                 await _context.SaveChangesAsync();
-                return View("Close");
-                //RedirectToAction("Details", new { id = review.BookId});
+                return RedirectToAction("ConfirmationReview", new { id = review.Id});
             }
+            return View(review);
+        }
+
+        public async Task<IActionResult> ConfirmationReview(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var review = await _context.Reviews.Include(r => r.Book).FirstOrDefaultAsync(r => r.Id == id);
+            if (review == null)
+                return NotFound();
+
             return View(review);
         }
 
