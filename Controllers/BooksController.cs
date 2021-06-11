@@ -113,13 +113,24 @@ namespace GoodreadsDoppelganger.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Books.FindAsync(id);
+            //var book = await _context.Books.FindAsync(id);
+            var book = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Id == id);
             if (book == null)
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+
+            //ViewData["Author"] = new SelectList(_context.Authors, "Author", "Author", book.Author);
+            PopulateAuthorsDropDownList();
             return View(book);
+        }
+
+        private void PopulateAuthorsDropDownList(object selectedAuthor = null)
+        {
+            var authorsQuery = from a in _context.Authors
+                                   orderby a.LastName
+                                   select a;
+            ViewBag.Author = new SelectList(authorsQuery.AsNoTracking(), "Id", "FullName", selectedAuthor);
         }
 
         // POST: Books/Edit/5
@@ -155,8 +166,15 @@ namespace GoodreadsDoppelganger.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+            ViewData["Genres"] = new SelectList(GetGenres(), "Genre", "Genre", book.Genre);
             return View(book);
         }
+
+        private IEnumerable<Genre> GetGenres()
+        {
+            return Enum.GetValues(typeof(Genre)).Cast<Genre>();
+        }
+
 
         // GET: Books/Delete/5
         public async Task<IActionResult> Delete(int? id)
