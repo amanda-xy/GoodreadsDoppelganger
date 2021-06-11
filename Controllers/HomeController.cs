@@ -22,58 +22,14 @@ namespace GoodreadsDoppelganger.Controllers
         }
 
         public IActionResult Index()
-        {
-            //var books = _context.Books.Include(b => b.Author).Select(b => b).ToList();
-            
+        {   
             return View();
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult About()
         {
-            if (id == null)
-                return NotFound();
-
-            var book = await _context.Books.Include(b => b.Author).Include(b => b.Reviews).FirstOrDefaultAsync(b => b.Id == id);
-            if (book == null)
-                return NotFound();
-
-            return View(book);
-        }
-
-         //GET
-        public async Task<IActionResult> NewReview(int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var book = await _context.Books.Include(b => b.Author).Include(b => b.Reviews).FirstOrDefaultAsync(b => b.Id == id);
-            if (book == null)
-                return NotFound();
-
-            ViewBag.BookId = book.Id;
-
             return View();
         }
-
-        //POST: Movies/Create
-        //To protect from overposting attacks, enable the specific properties you want to bind to.
-        //For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> NewReview([Bind("Rating,Text,HasSpoilers,BookId")] Review review)
-        {
-            review.PublicationDate = DateTime.Now;
-            if (ModelState.IsValid)
-            {
-                _context.Add(review);
-                await _context.SaveChangesAsync();
-                return View("Close");
-                    //RedirectToAction("Details", new { id = review.BookId});
-            }
-            return View(review);
-        }
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
