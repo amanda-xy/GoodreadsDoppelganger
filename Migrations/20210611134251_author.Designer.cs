@@ -4,14 +4,16 @@ using GoodreadsDoppelganger.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoodreadsDoppelganger.Migrations
 {
     [DbContext(typeof(GoodreadsContext))]
-    partial class GoodreadsContextModelSnapshot : ModelSnapshot
+    [Migration("20210611134251_author")]
+    partial class author
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

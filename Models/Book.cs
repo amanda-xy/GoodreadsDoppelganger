@@ -10,14 +10,32 @@ namespace GoodreadsDoppelganger.Models
     public enum Genre { Fantasy, SciFi, Horror, Fiction, Historic, Drama, Romantic, Thriller, Biography }
     public class Book
     {
+        private decimal _rating;
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
         public int NumberOfPages { get; set; }
         public string ImageUrl { get; set; }
         [Column(TypeName = "decimal(9,1)")]
-        public decimal Rating { get; set; }
+        public decimal Rating { get
+            {
+                if (Reviews.Count == 0)
+                    return 0;
+
+                decimal sum = Reviews.Sum(r => r.Rating);
+                decimal rating = sum / Reviews.Count;
+
+                return rating;
+            }
+
+            set { _rating = value; }
+            
+        }
+        [Required]
         public Genre Genre { get; set; }
+        [Required(ErrorMessage ="The field Author is required")]
         public int? AuthorId { get; set; }
         #nullable enable
         public virtual Author? Author { get; set; }

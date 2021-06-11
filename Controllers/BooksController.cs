@@ -85,6 +85,7 @@ namespace GoodreadsDoppelganger.Controllers
         public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
+            PopulateAuthorsDropDownList();
             return View();
         }
 
@@ -93,17 +94,30 @@ namespace GoodreadsDoppelganger.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,NumberOfPages,ImageUrl,Rating,Genre,AuthorId,PublicationDate")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,NumberOfPages,ImageUrl,Genre,AuthorId,PublicationDate")] Book book)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(book);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ConfirmationCreated), new { id = book.Id });
             }
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
             return View(book);
         }
+
+        public async Task<IActionResult> ConfirmationCreated(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Id == id);
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+        }
+
 
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -120,7 +134,6 @@ namespace GoodreadsDoppelganger.Controllers
                 return NotFound();
             }
 
-            //ViewData["Author"] = new SelectList(_context.Authors, "Author", "Author", book.Author);
             PopulateAuthorsDropDownList();
             return View(book);
         }
@@ -163,10 +176,22 @@ namespace GoodreadsDoppelganger.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ConfirmationEdited), new { id = book.Id });
             }
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
             ViewData["Genres"] = new SelectList(GetGenres(), "Genre", "Genre", book.Genre);
+            return View(book);
+        }
+
+        public async Task<IActionResult> ConfirmationEdited(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Id == id);
+            if (book == null)
+                return NotFound();
+
             return View(book);
         }
 
@@ -203,7 +228,12 @@ namespace GoodreadsDoppelganger.Controllers
             var book = await _context.Books.FindAsync(id);
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ConfirmationDeleted));
+        }
+
+        public IActionResult ConfirmationDeleted()
+        {
+            return View();
         }
 
         private bool BookExists(int id)

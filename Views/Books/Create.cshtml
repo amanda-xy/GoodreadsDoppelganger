@@ -33,18 +33,18 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" class="form-control"></select>
+                <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" class="form-control">
+                    <option value="">-- Select Genre --</option>
+                </select>
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorId" class="control-label"></label>
-                <select asp-for="AuthorId" class ="form-control" asp-items="ViewBag.AuthorId"></select>
+                <label asp-for="Author" class="control-label"></label>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.Author">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PublicationDate" class="control-label"></label>
@@ -52,15 +52,12 @@
                 <span asp-validation-for="PublicationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-info" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
