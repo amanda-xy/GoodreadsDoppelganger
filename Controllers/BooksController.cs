@@ -19,10 +19,14 @@ namespace GoodreadsDoppelganger.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var goodreadsContext = _context.Books.Include(b => b.Author).Include(b => b.Reviews).OrderBy(b => b.Title);
-            return View(await goodreadsContext.ToListAsync());
+            var books = _context.Books.Include(b => b.Author).Include(b => b.Reviews).OrderBy(b => b.Title);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(s => s.Title.Contains(searchString)).OrderBy(b => b.Title);
+            }
+            return View(await books.ToListAsync());
         }
 
         // GET: Books/Details/5
