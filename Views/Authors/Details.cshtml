@@ -29,11 +29,14 @@
 <h3>Books</h3>
 
 <div style="padding:0px; height:150px; overflow:hidden;">
-    @foreach (var item in @Model.Books)
+    @foreach (var book in @Model.Books)
     {
         <div style="width:10%; max-height:10%; float:left; padding-right:10px;">
-            <img src="@item.ImageUrl" alt="@item.Title" style="width:100%">
+            <a asp-controller="Books" asp-action="Details" asp-route-id="@book.Id">
+                <img src="@book.ImageUrl" alt="@book.Title" style="width:100%">
+            </a>
         </div>
+
     }
 </div>
-   
+

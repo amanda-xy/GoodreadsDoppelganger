@@ -2,40 +2,42 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    border-color: #1861ac;
 }
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    font-size: 14px;
 }
 
-.border-top {
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/*.border-top {
   border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
@@ -44,30 +46,33 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
+}*/
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #DBC8EF;
+    font-family: 'Trebuchet MS'
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 .line-clamp {
@@ -78,16 +83,66 @@ body {
     text-overflow: ellipsis;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-/*#header {
-    background-color: #f1f1f1;*/ /* Grey background */
-    /*padding: 50px 10px;*/ /* Some padding */
-    /*color: black;
-    text-align: center;*/ /* Centered text */
-    /*font-size: 90px;*/ /* Big font size */
-    /*font-weight: bold;
-    position: fixed;*/ /* Fixed position - sit on top of the page */
-    /*top: 0;
-    width: 100%;*/ /* Full width */
-    /*transition: 0.2s;*/ /* Add a transition effect (when scrolling - and font size is decreased) */
-/*}*/
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+    /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+    .sticky + .content {
+        padding-top: 102px;
+    }
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-outline-info {
+    border-color: #66B2FF;
+    border-width: 3px;
+    color: #66B2FF;
+    font-weight: bold;
+}
+
+
+.btn.outline-info:visited {
+    color:white;
+    background-color: #66B2FF;
+    border-color: #66B2FF;
+}
+
+.btn-outline-info:hover {
+    background-color: #66B2FF;
+    border-color: #66B2FF;
+}
+
+.btn-outline-info:active {
+    color:white !important;
+    background-color: #66B2FF !important;
+    border-color: #66B2FF !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-info:focus {
+    color:white !important;
+    background-color: #66B2FF !important;
+    border-color: #66B2FF !important;
+}
+
+
+.searchBox {
+    border-color: #66B2FF;
+    border-width: 3px;
+}
+
+
+
+

@@ -21,7 +21,7 @@ namespace GoodreadsDoppelganger.Models
         public decimal Rating { get
             {
                 if (Reviews.Count == 0)
-                    return 0;
+                    return 0m;
 
                 decimal sum = Reviews.Sum(r => r.Rating);
                 decimal rating = sum / Reviews.Count;

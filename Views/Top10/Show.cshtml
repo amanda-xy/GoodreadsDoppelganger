@@ -1,37 +1,30 @@
-﻿@model IEnumerable<GoodreadsDoppelganger.Models.Author>
+﻿@model IEnumerable<Book>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<h2>@ViewBag.Title</h2>
 
-<h1>Authors</h1>
-<a asp-action="Create" target="_blank" class="btn btn-outline-info">
-    New Author
-</a>
-
-<br />
 <div>
     <ul class="list-unstyled" style="margin-top:50px">
         @foreach (var item in Model)
         {
             <li>
-                <div class="card mb-3" style="max-height:200px; max-width:900px; border:none; overflow:hidden;">
+                <div class="card mb-3" style="max-height:200px; max-width:900px;">
                     <div class="row no-gutters">
                         <div class="col-md-2" style="max-width:150px;overflow:hidden;">
                             <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                <img src="@item.ImageUrl" alt=@item.FullName style="height:200px; " />
+                                <img src="@item.ImageUrl" alt=@item.Title style="height:198px" />
                             </a>
                         </div>
                         <div class="col-md-10">
                             <div class="card-body">
                                 <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                    <h5 class="card-title">@item.FullName</h5>
+                                    <h5 class="card-title">@item.Title</h5>
                                 </a>
+                                <h6 class="card-title">by @item.Author.FirstName @item.Author.LastName</h6>
                                 <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                    <div class="card-text line-clamp">@item.Biography</div>
+                                    <div class="card-text line-clamp">@item.Description</div>
                                 </a>
                                 <p class="card-text">
-                                    <small class="text-muted">Birth date: @item.BirthDate.ToString("yyyy-MM-dd") | Rating: @item.AverageRating.ToString("0.0") of 5 stars </small>
+                                    <small class="text-muted">Published: @item.PublicationDate.ToString("yyyy-MM-dd") | Rating: @item.Rating.ToString("0.0") of 5 stars (@item.Reviews.Count reviews) | @item.NumberOfPages Pages</small>
                                 </p>
                             </div>
                         </div>
