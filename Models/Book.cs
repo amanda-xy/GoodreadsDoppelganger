@@ -10,7 +10,6 @@ namespace GoodreadsDoppelganger.Models
     public enum Genre { Fantasy, SciFi, Horror, Fiction, Historic, Drama, Romantic, Thriller, Biography }
     public class Book
     {
-        private decimal _rating;
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -29,9 +28,6 @@ namespace GoodreadsDoppelganger.Models
 
                 return rating;
             }
-
-            set { _rating = value; }
-            
         }
         [Required]
         public Genre Genre { get; set; }
@@ -41,7 +37,7 @@ namespace GoodreadsDoppelganger.Models
         public virtual Author? Author { get; set; }
         [DataType(DataType.Date)]
         public DateTime PublicationDate { get; set; }
-        public virtual List<Review> Reviews { get; set; }
+        public virtual List<Review> Reviews { get; set; } = new List<Review>();
 
         public Book()
         {

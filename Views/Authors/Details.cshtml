@@ -1,0 +1,39 @@
+﻿@model GoodreadsDoppelganger.Models.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.FullName</h1>
+<div style="padding:0px">
+
+    <div style="float:left">
+        <img src=@Model.ImageUrl alt=@Model.FullName style="max-height:300px;" />
+    </div>
+    <div style="float:left; margin-left:10px;">
+        <p><span class="font-weight-bold">Birth date: </span>@Model.BirthDate.ToString("yyyy-MM-dd")</p>
+        <p><span class="font-weight-bold">Average rating: </span>@Model.AverageRating.ToString("#.#") of 5 stars</p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+            Edit
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+            Delete
+        </a>
+    </div>
+</div>
+
+<div class="container row" style="margin-left:0px; padding:0px">
+    <br />
+    <p>@Model.Biography</p>
+</div>
+<h3>Books</h3>
+
+<div style="padding:0px; height:150px; overflow:hidden;">
+    @foreach (var item in @Model.Books)
+    {
+        <div style="width:10%; max-height:10%; float:left; padding-right:10px;">
+            <img src="@item.ImageUrl" alt="@item.Title" style="width:100%">
+        </div>
+    }
+</div>
+   
