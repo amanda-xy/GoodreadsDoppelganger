@@ -4,9 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Author</h4>
+<h1>Edit author</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,40 +12,37 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <label asp-for="FirstName" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="FirstName" class="form-control inpBox" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <label asp-for="LastName" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="LastName" class="form-control inpBox" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Biography" class="control-label"></label>
-                <input asp-for="Biography" class="form-control" />
+                <label asp-for="Biography" class="control-label" style="font-weight:bold;"></label>
+                @Html.TextAreaFor(r => r.Biography, 9, 100, new { @style = "padding:10px;", @class = "inpBox" })
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
+                <label asp-for="BirthDate" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="BirthDate" class="form-control inpBox" />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
+                <label asp-for="ImageUrl" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="ImageUrl" class="form-control inpBox" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

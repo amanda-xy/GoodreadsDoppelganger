@@ -2,22 +2,28 @@
 
 <h2>Review for @Model.Book.Title was successfully posted!</h2>
 <br />
-<div class="card border-info" style="opacity:0.5">
-    <div class="card-header">
-        @if (@Model.HasSpoilers)
-        {<p class="h3">Contains spoilers!!</p>}
+<div class="card">
+    <div class="card-header" style="background-color:white; border-bottom:hidden">
+        <div style="float:left">
 
-        <p class="h4">
-            @Model.Rating of 5 stars
-        </p>
+            <p class="h4" style="font-weight:bold; padding-top:1rem;">
+                @Model.Rating OF 5 STARS
+            </p>
+            @if (Model.HasSpoilers)
+            {
+                <label class="h5" style="font-weight:bold; margin-right:1rem;">CONTAINS SPOILERS</label>
+            }
+
+        </div>
     </div>
+    <hr style="width:96%; margin-left:2% !important; margin-right:2% !important;" />
     <div class="card-body">
-        <p class="card-text">@Model.Text</p>
+        <p style="font-weight:bold;" class="card-text">@Model.Text</p>
     </div>
-    <div class="card-footer border-info" style="padding-bottom:0px;">
+    <div class="card-footer" style="padding-bottom:0px; background-color:white; border:none">
+        <hr />
         <p>
-            <small class="text-muted">Published: @Model.PublicationDate</small>
+            <small style="font-weight:bold;" class="text-muted">Published: @Model.PublicationDate</small>
         </p>
     </div>
 </div>
-

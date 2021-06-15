@@ -21,7 +21,7 @@ namespace GoodreadsDoppelganger.Controllers
         // GET: Authors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Authors.Include(a => a.Books).ThenInclude(b => b.Reviews).ToListAsync());
+            return View(await _context.Authors.Include(a => a.Books).ThenInclude(b => b.Reviews).OrderBy(a => a.FirstName).ThenBy(a => a.LastName).ToListAsync());
         }
 
         // GET: Authors/Details/5

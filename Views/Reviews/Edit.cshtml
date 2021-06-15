@@ -14,39 +14,35 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
+                <label asp-for="Rating" class="control-label" style="font-weight:bold;"></label>
+                <input asp-for="Rating" class="form-control inpBox" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <textarea asp-for="Text" class="form-control"></textarea>
+                <label asp-for="Text" class="control-label"style="font-weight:bold;"></label>
+                <textarea asp-for="Text" class="form-control inpBox"></textarea>
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HasSpoilers" /> @Html.DisplayNameFor(model => model.HasSpoilers)
+                <label class="form-check-label"style="font-weight:bold;">
+                    <input class="form-check-input inpBox" asp-for="HasSpoilers" /> @Html.DisplayNameFor(model => model.HasSpoilers)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="BookId" class="control-label"></label>
-                <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId"></select>
+                <label asp-for="BookId" class="control-label"style="font-weight:bold;"></label>
+                <select asp-for="BookId" class="form-control inpBox" asp-items="ViewBag.BookId"></select>
                 <span asp-validation-for="BookId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PublicationDate" class="control-label"></label>
-                <input asp-for="PublicationDate" class="form-control" />
+                <label asp-for="PublicationDate" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="PublicationDate" class="form-control inpBox" />
                 <span asp-validation-for="PublicationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -8,44 +8,40 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Author</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Biography)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Biography)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-    
+    <h1>@Model.FullName</h1>
+    <div style="padding:0px">
+
+        <div style="float:left">
+            <img src=@Model.ImageUrl alt=@Model.FullName style="max-height:300px;" />
+        </div>
+        <div style="float:left; margin-left:10px;">
+            <p><span class="font-weight-bold">Birth date: </span>@Model.BirthDate.ToString("yyyy-MM-dd")</p>
+            <p><span class="font-weight-bold">Average rating: </span>@Model.AverageRating.ToString("0.0") of 5 stars</p>
+        </div>
+    </div>
+
+    <div class="container row" style="margin-left:0px; padding:0px">
+        <br />
+        <p>@Model.Biography</p>
+    </div>
+
+    <h3>Books</h3>
+
+    <div style="padding:0px; height:150px; overflow:hidden;">
+        @foreach (var book in @Model.Books)
+        {
+            <div style="width:10%; max-height:10%; float:left; padding-right:10px;">
+                <a asp-controller="Books" asp-action="Details" asp-route-id="@book.Id">
+                    <img src="@book.ImageUrl" alt="@book.Title" style="width:100%">
+                </a>
+            </div>
+
+        }
+    </div>
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
     </form>
 </div>

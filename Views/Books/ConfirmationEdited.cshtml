@@ -2,6 +2,7 @@
 
 <div class="container-fluid" style="padding:0px">
     <h1>Changes Saved!</h1>
+    <hr />
     <h1>@Model.Title</h1>
     <h3>by @Model.Author.FirstName @Model.Author.LastName</h3>
     <div>
@@ -13,12 +14,7 @@
             <p><span class="font-weight-bold">Pages: </span>@Model.NumberOfPages</p>
             <p><span class="font-weight-bold">Rating: </span>@Model.Rating.ToString("#.#") of 5 stars</p>
             <p><span class="font-weight-bold">Publication date: </span>@Model.PublicationDate.ToString("yyyy-MM-dd")</p>
-            <a asp-action="Edit" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
-                Edit
-            </a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
-                Delete
-            </a>
+
         </div>
     </div>
 </div>
@@ -27,3 +23,10 @@
     <br />
     <p>@Model.Description</p>
 </div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-primary">
+    Edit
+</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-primary">
+    Delete
+</a>

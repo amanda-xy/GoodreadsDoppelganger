@@ -5,7 +5,7 @@
 }
 
 <h1>Books</h1>
-<a asp-action="Create" target="_blank" class="btn btn-outline-info">
+<a asp-action="Create" target="_blank" class="btn btn-outline-primary">
     New Book
 </a>
 
@@ -15,27 +15,29 @@
         @foreach (var item in Model)
         {
             <li>
-                <div class="card mb-3" style="max-height:200px; max-width:900px; border:none; overflow:hidden;">
+                <div class="card mb-3" style="max-height:300px; width:90%; border:none; overflow:hidden;">
                     <div class="row no-gutters">
-                        <div class="col-md-2" style="max-width:150px;overflow:hidden;">
+                        <div class="col-md-2" style="max-width:9rem;overflow:hidden;">
                             <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                <img src="@item.ImageUrl" alt=@item.Title style="height:200px" />
+                                <img src="@item.ImageUrl" alt=@item.Title style="height:13rem; " />
                             </a>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10" style="height:13rem">
                             <div class="card-body">
                                 <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                    <h5 class="card-title" style="font-weight:bold">@item.Title</h5>
+                                    <h5 class="card-title text-truncate" style="margin-bottom:0px;">@item.Title</h5>
                                 </a>
-                                <a asp-controller="Authors" asp-action="Details" asp-route-id="@item.AuthorId" style="color:black">
-                                    <h6 class="card-title">by @item.Author.FirstName @item.Author.LastName</h6>
+                                <a asp-controller="Authors" asp-action="Details" asp-route-id="@item.AuthorId" style="color:black;">
+                                    <h6 class="card-title" style="margin-top:3px; margin-bottom:7px;">by @item.Author.FirstName @item.Author.LastName</h6>
                                 </a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
-                                        <div class="card-text line-clamp">@item.Description</div>
-                                    </a>
-                                    <p class="card-text">
-                                        <small class="text-muted">Published: @item.PublicationDate.ToString("yyyy-MM-dd") | Rating: @item.Rating.ToString("0.0") of 5 stars (@item.Reviews.Count reviews) | @item.NumberOfPages Pages</small>
-                                    </p>
+                                <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
+                                    <div class="card-text line-clamp" style="margin-bottom:0px; padding-bottom:0px;">@item.Description</div>
+                                </a>
+                            </div>
+                            <div class="card-footer" style="border:none; background-color:white; padding-top:0px; padding-bottom:0px; margin-bottom:0px; position:static;">
+                                <p class="card-text">
+                                    <small class="text-muted">Published: @item.PublicationDate.ToString("yyyy-MM-dd") | Rating: @item.Rating.ToString("0.0") of 5 stars (@item.Reviews.Count reviews) | @item.NumberOfPages Pages </small>
+                                </p>
                             </div>
                         </div>
                     </div>

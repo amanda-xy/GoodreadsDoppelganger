@@ -5,7 +5,7 @@
 }
 
 <h1>Authors</h1>
-<a asp-action="Create" target="_blank" class="btn btn-outline-info">
+<a asp-action="Create" target="_blank" class="btn btn-outline-primary">
     New Author
 </a>
 
@@ -30,6 +30,8 @@
                                 <a asp-action="Details" asp-route-id="@item.Id" style="color:black">
                                     <div class="card-text line-clamp">@item.Biography</div>
                                 </a>
+                            </div>
+                            <div class="card-footer" style="border:none; background-color:white;">
                                 <p class="card-text">
                                     <small class="text-muted">Birth date: @item.BirthDate.ToString("yyyy-MM-dd") | Rating: @item.AverageRating.ToString("0.0") of 5 stars </small>
                                 </p>

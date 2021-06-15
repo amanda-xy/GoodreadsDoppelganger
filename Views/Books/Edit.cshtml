@@ -4,9 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Book</h4>
+<h1>Edit book</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,49 +12,45 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <label asp-for="Title" class="control-label" style="font-weight:bold;"></label>
+                <input asp-for="Title" class="form-control inpBox" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @Html.TextAreaFor(r => r.Description, 9, 100, new { @style = "padding:10px;" })
+                <label asp-for="Description" class="control-label" style="font-weight:bold;"></label>
+                @Html.TextAreaFor(r => r.Description, 9, 100, new { @style = "padding:10px;", @class = "inpBox" })
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfPages" class="control-label"></label>
-                <input asp-for="NumberOfPages" class="form-control" />
+                <label asp-for="NumberOfPages" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="NumberOfPages" class="form-control inpBox" />
                 <span asp-validation-for="NumberOfPages" class="text-danger"></span>
             </div>
             <div class="form-group">
-               @* <label asp-for="ImageUrl">Choose a book cover:</label>*@
-
-                @*<input type="file" id="url" name="bookCover" accept="image/png, image/jpeg">*@
-
-
-                <label asp-for="ImageUrl" class="control-label"></label>
-        <input asp-for="ImageUrl" class="form-control" />
+                <label asp-for="ImageUrl" class="control-label"style="font-weight:bold;"></label>
+        <input asp-for="ImageUrl" class="form-control inpBox" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" class="form-control">
+                <label asp-for="Genre" class="control-label"style="font-weight:bold;"></label>
+                <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" class="form-control inpBox">
                     <option selected="selected" value="">@Model.Genre</option>
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.Author">
+                <label asp-for="Author" class="control-label"style="font-weight:bold;"></label>
+                <select asp-for="AuthorId" class="form-control inpBox" asp-items="ViewBag.Author">
                     <option selected="selected" value="">@Model.Author.FirstName @Model.Author.LastName</option>
                 </select>
                 <span asp-validation-for="AuthorId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PublicationDate" class="control-label"></label>
-                <input asp-for="PublicationDate" class="form-control" />
+                <label asp-for="PublicationDate" class="control-label"style="font-weight:bold;"></label>
+                <input asp-for="PublicationDate" class="form-control inpBox" />
                 <span asp-validation-for="PublicationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-outline-info" />
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>

@@ -9,6 +9,7 @@ namespace GoodreadsDoppelganger.Models
     public class Review
     {
         public int Id { get; set; }
+        [Required]
         public int Rating { get; set; }
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }

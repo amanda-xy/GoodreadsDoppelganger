@@ -4,21 +4,22 @@
     ViewData["Title"] = "Details";
 }
 <h1>@Model.Title</h1>
-<h3>by @Model.Author.FirstName @Model.Author.LastName</h3>
-<div style="padding:0px">
+<a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" class="h3" style="color:black">by @Model.Author.FirstName @Model.Author.LastName</a>
+
+<div style="padding:0px; margin-top:2rem">
 
         <div style="float:left">
             <img src=@Model.ImageUrl alt=@Model.Title style="max-height:300px;" />
         </div>
         <div style="float:left; margin-left:10px;">
-            <p><span class="font-weight-bold">Genre: </span>@Model.Genre</p>
-            <p><span class="font-weight-bold">Pages: </span>@Model.NumberOfPages</p>
-            <p><span class="font-weight-bold">Rating: </span>@Model.Rating.ToString("#.#") of 5 stars</p>
-            <p><span class="font-weight-bold">Publication date: </span>@Model.PublicationDate.ToString("yyyy-MM-dd")</p>
-            <a asp-action="Edit" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+            <p><span class="font-weight-bold">GENRE: </span>@Model.Genre</p>
+            <p><span class="font-weight-bold">PAGES: </span>@Model.NumberOfPages</p>
+            <p><span class="font-weight-bold">RATING: </span>@Model.Rating.ToString("0.0") of 5 stars</p>
+            <p><span class="font-weight-bold">PUBLICATION DATE: </span>@Model.PublicationDate.ToString("yyyy-MM-dd")</p>
+            <a asp-action="Edit" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-primary">
                 Edit
             </a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+            <a asp-action="Delete" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-primary">
                 Delete
             </a>
         </div>
@@ -30,10 +31,10 @@
 </div>
 
 
-<h2>Reviews (@Model.Reviews.Count)</h2>
+<h2 style="font-weight:bold;">Reviews (@Model.Reviews.Count)</h2>
 
 <div>
-    <a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-info">
+    <a asp-action="NewReview" asp-route-id="@Model.Id" target="_blank" class="btn btn-outline-primary">
         New Review
     </a>
 </div>
@@ -42,51 +43,57 @@
     @foreach (var review in Model.Reviews.OrderByDescending(r => r.PublicationDate))
     {
         <li style="margin-top:40px;">
-            <div class="card border-info">
-                <div class="card-header">
+            <div class="card">
+                <div class="card-header" style="background-color:white; border-bottom:hidden">
                     <div style="float:left">
+
+                        <p class="h4" style="font-weight:bold; padding-top:1rem;">
+                            @review.Rating OF 5 STARS
+                        </p>
                         @if (review.HasSpoilers)
                         {
-                            <label class="h3">Contains spoilers!!</label>
-                            <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapse-@review.Id" aria-expanded="false" aria-controls="@review.Id">Show</button>
+                            <label class="h5" style="font-weight:bold; margin-right:1rem;">CONTAINS SPOILERS</label>
+                            <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapse-@review.Id" aria-expanded="false" aria-controls="@review.Id">Show</button>
                         }
-                        <p class="h4">
-                            @review.Rating of 5 stars
-                        </p>
+                    
                     </div>
                     <div style="float:right">
-                        <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@review.Id" target="_blank" class="btn btn-outline-info">
+                        <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@review.Id" target="_blank" class="btn btn-outline-secondary">
                             Delete
                         </a>
                     </div>
                 </div>
-
+                
                 @if (review.HasSpoilers)
                 {
-                    <div class="panel-collapse collapse" id="collapse-@review.Id">
-                        <div class="card-body">
-                            <p class="card-text">@review.Text</p>
-                        </div>
-                        <div class="card-footer border-info" style="padding-bottom:0px;">
-                            <p>
-                                <small class="text-muted">Published: @review.PublicationDate</small>
-                            </p>
-                        </div>
-                    </div>
+            <div class="panel-collapse collapse" id="collapse-@review.Id">
+                <hr style="width:96%; margin-left:2% !important; margin-right:2% !important;" />
+                <div class="card-body">
+                    <p style="font-weight:bold" class="card-text">@review.Text</p>
+                </div>
+                <div class="card-footer" style="padding-bottom: 0px; background-color:white; border:none">
+                    <hr />
+                    <p>
+                        <small class="text-muted">Published: @review.PublicationDate</small>
+                    </p>
+                </div>
+            </div>
                 }
 
                 else
                 {
-                    <div class="panel-collapse collapse show" id="collapse-@review.Id">
-                        <div class="card-body">
-                            <p class="card-text">@review.Text</p>
-                        </div>
-                        <div class="card-footer border-info" style="padding-bottom:0px;">
-                            <p>
-                                <small class="text-muted">Published: @review.PublicationDate</small>
-                            </p>
-                        </div>
-                    </div>
+            <div class="panel-collapse collapse show" id="collapse-@review.Id">
+                <hr style="width:96%; margin-left:2% !important; margin-right:2% !important;" />
+                <div class="card-body">
+                    <p style="font-weight:bold" class="card-text">@review.Text</p>
+                </div>
+                <div class="card-footer" style="padding-bottom:0px; background-color:white; border:none">
+                    <hr />
+                    <p>
+                        <small style="font-weight:bold;" class="text-muted">Published: @review.PublicationDate</small>
+                    </p>
+                </div>
+            </div>
                 }
             </div>
         </li>
