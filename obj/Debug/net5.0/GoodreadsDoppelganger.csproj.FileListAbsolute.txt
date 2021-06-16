@@ -167,3 +167,4 @@ C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppe
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Authors\ConfirmationCreated.cshtml.g.cs
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Authors\ConfirmationEdited.cshtml.g.cs
 C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\Razor\Views\Authors\ConfirmationDeleted.cshtml.g.cs
+C:\Users\eriks\source\repos\Skola\Utveckling av Webbapplikationer\GoodreadsDoppelganger\GoodreadsDoppelganger\obj\Debug\net5.0\GoodreadsDoppelganger.csproj.AssemblyReference.cache

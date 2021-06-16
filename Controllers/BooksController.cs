@@ -19,7 +19,7 @@ namespace GoodreadsDoppelganger.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, Genre? genre)
         {
             var books = _context.Books.Include(b => b.Author).Include(b => b.Reviews).OrderBy(b => b.Title);
 
@@ -27,6 +27,18 @@ namespace GoodreadsDoppelganger.Controllers
             {
                 books = books.Where(s => s.Title.Contains(searchString)).OrderBy(b => b.Title);
             }
+
+            SelectList genres = new SelectList(Enum.GetValues(typeof(Genre)));
+
+            genres.Append(new SelectListItem() { Text = "--Select genre--", Value = null, Selected = true });
+            ViewBag.Genres = genres;
+
+            if (genre != null)
+            {
+                Genre genre1 = (Genre)genre;
+                books = books.Where(b => b.Genre == genre1).OrderBy(b => b.Title);
+            }
+
             return View(await books.ToListAsync());
         }
 

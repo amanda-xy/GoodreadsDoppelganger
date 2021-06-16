@@ -9,6 +9,18 @@
     New Book
 </a>
 
+<label class="control-label" style="font-weight:bold;"></label>
+@using (Html.BeginForm("Index", "Books", FormMethod.Get))
+{
+<div style="margin-top:2rem;">
+    <select class="form-control inpBox col-md-4" style = "float:left; margin-right:1rem;" asp-items="ViewBag.Genres">
+        <option value="null">Choose genre</option>
+    </select>
+    @* @Html.DropDownList("genre", (SelectList)ViewBag.No, new { @class = "form-control inpBox col-md-4", @style = "float:left; margin-right:1rem;" })*@
+    <input type="submit" value="Filter" class="btn btn-outline-primary" style="float:left; height:38px;" />
+</div>
+}
+
 <br />
 <div>
     <ul class="list-unstyled" style="margin-top:50px">

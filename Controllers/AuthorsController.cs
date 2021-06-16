@@ -123,8 +123,20 @@ namespace GoodreadsDoppelganger.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ConfirmationEdited), new { id = author.Id });
             }
+            return View(author);
+        }
+
+        public async Task<IActionResult> ConfirmationEdited(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var author = await _context.Authors.Include(a => a.Books).FirstOrDefaultAsync(b => b.Id == id);
+            if (author == null)
+                return NotFound();
+
             return View(author);
         }
 
@@ -154,7 +166,12 @@ namespace GoodreadsDoppelganger.Controllers
             var author = await _context.Authors.FindAsync(id);
             _context.Authors.Remove(author);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ConfirmationDeleted));
+        }
+
+        public IActionResult ConfirmationDeleted()
+        {
+            return View();
         }
 
         private bool AuthorExists(int id)
