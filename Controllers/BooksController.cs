@@ -87,9 +87,14 @@ namespace GoodreadsDoppelganger.Controllers
         }
 
         // GET: Books/Create
-        public IActionResult Create()
+        public IActionResult Create(int? authorId)
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
+            if (authorId == null)
+                ViewData["SelectedAuthorId"] = -1;
+            else
+                ViewData["SelectedAuthorId"] = authorId;
+
             PopulateAuthorsDropDownList();
             return View();
         }

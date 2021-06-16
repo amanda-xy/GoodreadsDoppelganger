@@ -59,8 +59,21 @@ namespace GoodreadsDoppelganger.Controllers
             {
                 _context.Add(author);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ConfirmationCreated), new { id = author.Id });
             }
+        
+            return View(author);
+        }
+
+        public async Task<IActionResult> ConfirmationCreated(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var author = await _context.Authors.Include(a => a.Books).FirstOrDefaultAsync(b => b.Id == id);
+            if (author == null)
+                return NotFound();
+
             return View(author);
         }
 

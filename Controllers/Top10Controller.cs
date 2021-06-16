@@ -58,6 +58,11 @@ namespace GoodreadsDoppelganger.Controllers
         public async Task<IActionResult> YogaMindfulness()
         {
             var books = await _context.Books.Include(b => b.Author).Include(b => b.Reviews).ToListAsync();
+            Dictionary<string, bool> titles = new Dictionary<string, bool>();
+            titles.Add("Light on Yoga: The Bible of Modern Yoga", true);
+            titles.Add("Yoga for Everyone: 50 Poses For Every Type of Body", true);
+            titles.Add("The Little Book of Being: Practices and Guidance for Uncovering Your Natural Awareness", true);
+            titles.Add("Yoga Body: The Origins of Modern Posture Practice", true);
 
             ViewData["Title"] = "Top 10 books about yoga and mindfulness";
             return View("Show", books);

@@ -11,42 +11,63 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <div>
+
+                    @if (ViewBag.SelectedAuthorId < 0)
+                    {
+                        <label asp-for="Author" class="control-label" style="font-weight:bold;"></label>
+                        <select asp-for="AuthorId" class="form-control inpBox" asp-items="ViewBag.Author">
+                            <option value=""></option>
+                        </select>
+                        <span asp-validation-for="AuthorId" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <label asp-for="Author" class="control-label" style="font-weight:bold;"></label>
+                        <select asp-for="AuthorId" class="form-control inpBox" asp-items="ViewBag.Author">
+                            <option value="@ViewBag.SelectedAuthorId"></option>
+                        </select>
+                        <span asp-validation-for="AuthorId" class="text-danger"></span>
+                    }
+                </div>
+
+
+            </div>
+
+
+
+
             <div class="form-group">
                 <label asp-for="Title" class="control-label" style="font-weight:bold;">Title</label>
                 <input asp-for="Title" class="form-control inpBox" style="background-color:white;" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"style="font-weight:bold;"></label>
+                <label asp-for="Description" class="control-label" style="font-weight:bold;"></label>
                 <input asp-for="Description" class="form-control inpBox" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfPages" class="control-label"style="font-weight:bold;"></label>
+                <label asp-for="NumberOfPages" class="control-label" style="font-weight:bold;"></label>
                 <input asp-for="NumberOfPages" class="form-control inpBox" />
                 <span asp-validation-for="NumberOfPages" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"style="font-weight:bold;"></label>
+                <label asp-for="ImageUrl" class="control-label" style="font-weight:bold;"></label>
                 <input asp-for="ImageUrl" class="form-control inpBox" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Genre" class="control-label"style="font-weight:bold;"></label>
+                <label asp-for="Genre" class="control-label" style="font-weight:bold;"></label>
                 <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" class="form-control inpBox">
                     <option value="">-- Select Genre --</option>
                 </select>
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Author" class="control-label"style="font-weight:bold;"></label>
-                <select asp-for="AuthorId" class="form-control inpBox" asp-items="ViewBag.Author">
-                    <option value=""></option>
-                </select>
-                <span asp-validation-for="AuthorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublicationDate" class="control-label"style="font-weight:bold;"></label>
+                <label asp-for="PublicationDate" class="control-label" style="font-weight:bold;"></label>
                 <input asp-for="PublicationDate" class="form-control inpBox" />
                 <span asp-validation-for="PublicationDate" class="text-danger"></span>
             </div>
@@ -54,6 +75,13 @@
                 <input type="submit" value="Create" class="btn btn-outline-primary" />
             </div>
         </form>
+    </div>
+    
+    
+    <div class="form-group">
+        <label style="font-weight:bold; padding-left:15px;">or add new author</label>
+        <br />
+        <a asp-controller="Authors" asp-action="Create" class="btn btn-outline-primary" style="height:40px;">Create new author</a>
     </div>
 </div>
 
